@@ -1,36 +1,35 @@
 "use client";
-import { CustomCategory } from "@/app/(app)/types";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
-import { useState } from "react";
-import { ScrollArea } from "../ui/scroll-area";
+import { CategoriesManyOutput } from "@/modules/categories/types";
+import { useTRPC } from "@/trpc/client";
+import { useQuery } from "@tanstack/react-query";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { ScrollArea } from "../ui/scroll-area";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
 
 interface CategoriesSidebarProps {
   open: boolean;
-  onOpenChange: (open: boolean) => void;
-  data: CustomCategory[];
+  action: (open: boolean) => void;
 }
 
-export const CategoriesSidebar = ({
-  open,
-  onOpenChange,
-  data,
-}: CategoriesSidebarProps) => {
+export const CategoriesSidebar = ({ open, action }: CategoriesSidebarProps) => {
+  const trpc = useTRPC();
+  const { data } = useQuery(trpc.categories.getMany.queryOptions());
   const router = useRouter();
 
-  const [parentCategories, setParentCategories] = useState<
-    CustomCategory[] | null
+  const [parentCategories, setParentCategories] =
+    useState<CategoriesManyOutput | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<
+    CategoriesManyOutput[1] | null
   >(null);
-  const [selectedCategory, setSelectedCategory] =
-    useState<CustomCategory | null>(null);
 
   const currentCategories = parentCategories ?? data ?? [];
 
-  const handleOpenChange = (open: boolean) => {
+  const handleSidebarOnOpenChange = (open: boolean) => {
     setSelectedCategory(null);
     setParentCategories(null);
-    onOpenChange(open);
+    action(open);
   };
 
   const handleBackClick = () => {
@@ -42,9 +41,9 @@ export const CategoriesSidebar = ({
 
   const backgroundColor = selectedCategory?.color || "white";
 
-  const handleCategoryClick = (category: CustomCategory) => {
+  const handleCategoryClick = (category: CategoriesManyOutput[1]) => {
     if (category.subcategories && category.subcategories.length > 0) {
-      setParentCategories(category.subcategories as CustomCategory[]);
+      setParentCategories(category.subcategories as CategoriesManyOutput);
       setSelectedCategory(category);
     } else {
       if (parentCategories && selectedCategory) {
@@ -56,12 +55,12 @@ export const CategoriesSidebar = ({
           router.push(`${category.slug}`);
         }
 
-        handleOpenChange(false);
+        handleSidebarOnOpenChange(false);
       }
     }
   };
   return (
-    <Sheet open={open} onOpenChange={handleOpenChange}>
+    <Sheet open={open} onOpenChange={handleSidebarOnOpenChange}>
       <SheetContent
         side="left"
         className="p-0 transition-none"
