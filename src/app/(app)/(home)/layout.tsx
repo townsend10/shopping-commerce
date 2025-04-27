@@ -12,6 +12,8 @@ const Layout = async ({ children }: LayoutProps) => {
   const queryClient = getQueryClient();
 
   void queryClient.prefetchQuery(trpc.categories.getMany.queryOptions());
+
+  console.log("queryClient", queryClient);
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
