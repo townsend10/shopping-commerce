@@ -1,5 +1,5 @@
 "use client";
-import { useDropdownPosition } from "@/app/(app)/(home)/search-filters/use-dropdowmn-position";
+import { useDropdownPosition } from "@/modules/home/ui/components/search-filters/use-dropdowmn-position";
 import { cn } from "@/lib/utils";
 import { CategoriesManyOutput } from "@/modules/categories/types";
 import Link from "next/link";
@@ -49,7 +49,7 @@ export const CategoryDropDown = ({
               "bg-white border-primary shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] -translate-x-[4px] -translate-y-[4px] "
           )}
         >
-          <Link href={`${category.slug === "all" ? "" : category.slug}`}>
+          <Link href={`${category.slug === "all" ? "/" : category.slug}`}>
             {" "}
             {category.name}
           </Link>
