@@ -28,29 +28,7 @@ const categories = [
       },
     ],
   },
-  {
-    name: "Programação",
-    color: "#10bb44",
-    slug: "programaçao",
-    subcategories: [
-      {
-        name: "Prog 1",
-        slug: "prog-1",
-      },
-      {
-        name: "Prog 2",
-        slug: "prog-2",
-      },
-      {
-        name: "Prog 3",
-        slug: "prog-3",
-      },
-      {
-        name: "Prog 4",
-        slug: "prog-4",
-      },
-    ],
-  },
+
   {
     name: "Livro",
     color: "#0d9fb9",
