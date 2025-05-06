@@ -187,7 +187,7 @@ export interface Product {
   name: string;
   description?: string | null;
   /**
-   * in USD
+   * in BRL
    */
   price: number;
   category?: (string | null) | Category;
