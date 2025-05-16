@@ -1,5 +1,5 @@
 import { Footer } from "@/modules/tenants/ui/components/footer";
-import { Navbar, NavbarSkeeleton } from "@/modules/tenants/ui/components/nabar";
+import { Navbar, NavbarSkeeleton } from "@/modules/tenants/ui/components/navbar";
 import { getQueryClient, trpc } from "@/trpc/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Suspense } from "react";
