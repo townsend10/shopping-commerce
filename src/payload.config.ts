@@ -15,6 +15,7 @@ import { Tags } from "./collections/Tags";
 import { multiTenantPlugin } from "@payloadcms/plugin-multi-tenant";
 import { Tenants } from "./collections/Tenants";
 import { Config } from "./payload-types";
+import { Orders } from "./collections/Orders";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -26,7 +27,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Categories, Products, Tags, Tenants],
+  collections: [Users, Media, Categories, Products, Tags, Tenants, Orders],
   // cookiePrefix: "lojinha" OPCIONAL MUDAR O NOME DO COOKIE,
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
@@ -39,7 +40,7 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
-    multiTenantPlugin<Config >({
+    multiTenantPlugin<Config>({
       collections: {
         products: {},
       },
