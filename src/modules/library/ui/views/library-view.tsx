@@ -1,9 +1,10 @@
 import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
-import { ProductList, ProductListSkeeleton } from "../components/product-list";
 import { Suspense } from "react";
+import { ProductList, ProductListSkeeleton } from "../components/product-list";
 
 export const LibraryView = () => {
+
   return (
     <div className="min-h-screen bg-white">
       <nav className="p-4 bg-[#F4F4F0] w-full border-b">
