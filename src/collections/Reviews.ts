@@ -1,3 +1,4 @@
+import { isSuperAdmin } from "@/lib/access";
 import type { CollectionConfig } from "payload";
 
 export const Reviews: CollectionConfig = {
@@ -6,7 +7,10 @@ export const Reviews: CollectionConfig = {
     useAsTitle: "description",
   },
   access: {
-    read: () => true,
+    read: ({ req }) => isSuperAdmin(req.user),
+    create: ({ req }) => isSuperAdmin(req.user),
+    delete: ({ req }) => isSuperAdmin(req.user),
+    update: ({ req }) => isSuperAdmin(req.user),
   },
   fields: [
     {
