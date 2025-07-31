@@ -240,6 +240,10 @@ export interface Product {
    * Protected content after purchase
    */
   content?: string | null;
+  /**
+   * Check  if you want to hide this product
+   */
+  isArchived?: boolean | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -436,6 +440,7 @@ export interface ProductsSelect<T extends boolean = true> {
   image?: T;
   refundPolicy?: T;
   content?: T;
+  isArchived?: T;
   updatedAt?: T;
   createdAt?: T;
 }

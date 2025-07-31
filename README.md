@@ -2,7 +2,7 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-##VIDEO2: 5h:43
+##VIDEO2: 6h:08
 stripe listen --forward-to localhost:3000/api/stripe/webhooks
 
 First, run the development server:

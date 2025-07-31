@@ -12,6 +12,7 @@ export const Products: CollectionConfig = {
 
       return Boolean(tenant?.stripeDetailsSubmitted);
     },
+    delete: ({ req }) => isSuperAdmin(req.user),
   },
   admin: {
     useAsTitle: "name",
@@ -64,6 +65,15 @@ export const Products: CollectionConfig = {
       type: "textarea",
       admin: {
         description: "Protected content after purchase",
+      },
+    },
+    {
+      name: "isArchived",
+      label: "Archive",
+      defaultValue: false,
+      type: "checkbox",
+      admin: {
+        description: "Check  if you want to hide this product",
       },
     },
   ],
