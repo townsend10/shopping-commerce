@@ -1,5 +1,4 @@
 "use client";
-import { useDropdownPosition } from "@/modules/home/ui/components/search-filters/use-dropdowmn-position";
 import { cn } from "@/lib/utils";
 import { CategoriesManyOutput } from "@/modules/categories/types";
 import Link from "next/link";
@@ -28,7 +27,6 @@ export const CategoryDropDown = ({
   };
 
   const onMosueLeave = () => setIsOpen(false);
-
 
   return (
     <div
@@ -61,10 +59,7 @@ export const CategoryDropDown = ({
           />
         )}
       </div>
-      <SubcategoryMenu
-        category={category}
-        isOpen={isOpen}
-      />
+      <SubcategoryMenu category={category} isOpen={isOpen} />
     </div>
   );
 };

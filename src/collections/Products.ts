@@ -15,6 +15,7 @@ export const Products: CollectionConfig = {
   },
   admin: {
     useAsTitle: "name",
+    description: "You must verifiy your account before creating products",
   },
   fields: [
     {
@@ -61,9 +62,9 @@ export const Products: CollectionConfig = {
     {
       name: "content",
       type: "textarea",
-      admin:{
-        description:'Protected content after purchase'
-      }
+      admin: {
+        description: "Protected content after purchase",
+      },
     },
   ],
 };
