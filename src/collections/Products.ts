@@ -1,5 +1,6 @@
 import { isSuperAdmin } from "@/lib/access";
 import { Tenant } from "@/payload-types";
+import { lexicalEditor, UploadFeature } from "@payloadcms/richtext-lexical";
 import { CollectionConfig } from "payload";
 
 export const Products: CollectionConfig = {
@@ -26,7 +27,7 @@ export const Products: CollectionConfig = {
     },
     {
       name: "description",
-      type: "text",
+      type: "richText",
     },
     {
       name: "price",
@@ -62,7 +63,8 @@ export const Products: CollectionConfig = {
     },
     {
       name: "content",
-      type: "textarea",
+      type: "richText",
+    
       admin: {
         description: "Protected content after purchase",
       },
@@ -74,6 +76,16 @@ export const Products: CollectionConfig = {
       type: "checkbox",
       admin: {
         description: "Check  if you want to hide this product",
+      },
+    },
+    {
+      name: "isPrivate",
+      label: "Private",
+      defaultValue: false,
+      type: "checkbox",
+      admin: {
+        description:
+          "Check  if you want to show in private store insted public",
       },
     },
   ],

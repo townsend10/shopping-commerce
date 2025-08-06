@@ -108,14 +108,14 @@ const seed = async () => {
 
   const adminAccount = await stripe.accounts.create({});
 
-  const adminTenant = await payload.create({
-    collection: "tenants",
-    data: {
-      name: "admin",
-      slug: "admin",
-      stripeAccountId: adminAccount.id,
-    },
-  });
+  // const adminTenant = await payload.create({
+  //   collection: "tenants",
+  //   data: {
+  //     name: "admin",
+  //     slug: "admin",
+  //     stripeAccountId: adminAccount.id,
+  //   },
+  // });
 
   await payload.create({
     collection: "users",
@@ -124,11 +124,11 @@ const seed = async () => {
       password: "demo",
       roles: ["super-admin"],
       username: "admin",
-      tenants: [
-        {
-          tenant: adminTenant.id,
-        },
-      ],
+      // tenants: [
+      //   {
+      //     tenant: adminTenant.id,
+      //   },
+      // ],
     },
   });
 
