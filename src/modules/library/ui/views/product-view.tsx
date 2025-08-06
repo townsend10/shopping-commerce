@@ -5,6 +5,8 @@ import { ArrowLeftIcon } from "lucide-react";
 import Link from "next/link";
 import { ReviewSidebar } from "../components/review-sidebar";
 import { RichText } from "@payloadcms/richtext-lexical/react";
+import { Suspense } from "react";
+import { ReviewFormSkeeleton } from "../components/review-form";
 
 interface ProductViewProps {
   productId: string;
@@ -34,7 +36,9 @@ export const ProductView = ({ productId }: ProductViewProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-7 gap-4 lg:gap-16">
           <div className="lg:col-span-2 ">
             <div className="p-4 bg-white rounded-md border gap-4">
-              <ReviewSidebar productId={productId} />
+              <Suspense fallback={<ReviewFormSkeeleton />}>
+                <ReviewSidebar productId={productId} />
+              </Suspense>
             </div>
           </div>
           <div className="lg:col-span-5">
@@ -48,6 +52,19 @@ export const ProductView = ({ productId }: ProductViewProps) => {
           </div>
         </div>
       </section>
+    </div>
+  );
+};
+
+export const ProductViewSkeeleton = () => {
+  return (
+    <div className="min-h-screen bg-white">
+      <nav className="p-4 bg-[#F4F4F0] w-full border-b ">
+      <div className="flex items-center gap-2">
+          <ArrowLeftIcon className="size-4" />
+          <span className="text font-medium">Back to Library</span>
+        </div>
+      </nav>
     </div>
   );
 };
